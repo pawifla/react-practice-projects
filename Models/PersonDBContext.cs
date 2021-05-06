@@ -14,11 +14,25 @@ namespace ReactCoreApi.Models
 
         }
         public List<Person> getPersons() => Persons.ToList(); 
-        public void AddPerson(Person person)
+        public int addPerson(Person person)
         {
             Persons.Add(person);
             this.SaveChanges();
-            return;
+            return 1;
+        }
+        public int editPerson(Person person)
+        {
+            var personToEdit = Persons.Where(x => x.PersonID == person.PersonID).ToList().FirstOrDefault();
+            Persons.Update(personToEdit);
+            this.SaveChanges();
+            return 1;
+        }
+        public int deletePerson(int id)
+        {
+            var personToDelete = Persons.Where(x => x.PersonID == id).ToList().FirstOrDefault();
+            Persons.Remove(personToDelete);
+            this.SaveChanges();
+            return 1;
         }
     }
 }

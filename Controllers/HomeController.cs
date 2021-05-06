@@ -32,8 +32,26 @@ namespace ReactCoreApi.Controllers
         }       
         // GET: api
         // POST: api/Create
-        //There are no views so none of the views work.
         [HttpPost]
+        [Route("Create")]
+        public int CreatePerson (Person person)
+        {
+            //see if convert works.
+          return Convert.ToInt16(_database.addPerson(person));
+        }
+        [HttpPost]
+        [Route("Edit")]
+        public bool EditPerson(Person person)
+        {
+            return Convert.ToBoolean(_database.editPerson(person));
+        }
+
+        [HttpDelete]
+        [Route("Delete/{id}")]
+        public bool DeletePerson(int id)
+        {
+            return Convert.ToBoolean(_database.deletePerson(id));
+        }
 
         // GET: Home/Edit/5
         public ActionResult Edit(int id)
