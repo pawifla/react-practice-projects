@@ -1,0 +1,23 @@
+﻿Things to do:
+
+>Look at Tania Rascia's code for crud set up
+	^aka put crud things on the main app
+>Rerender on Create
+>Make Delete work
+>How will we be doing Edit?(prob look at Tania's code)
+>Add 
+
+Better File Structure might be something like this:
+	why: bc we need to have the crud ops easily called from all components
+	so: we need to make a crud component that holds the api calls and makes layout for the rest of the components
+		File Structure:
+		>src
+			>components
+				>CRUD Containter: will have all api calls and layouts createForm and tableView
+					>CreateForm Component
+					>TableView Component
+					>Toasts Component??
+			>App.js
+
+React.Fragments make it so you can nest child components without unneccessary div tags (aka extra nodes)
+	Pro is that these support keys when. Unlike empty tags <></> 
