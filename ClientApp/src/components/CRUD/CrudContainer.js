@@ -26,7 +26,6 @@ const CrudContainer = () => {
     }
     const editPerson = (person) => {
         console.log('edit'+person);
-        setEdit(false);
         const data = JSON.stringify(person, null, 2);
         console.log(data);
         fetch('api/Edit',{
@@ -34,6 +33,8 @@ const CrudContainer = () => {
             headers:{'Content-Type': 'application/json'},
             body:data
         }).catch (error => console.log(error)); 
+        setEdit(false);
+
     }
 
     const deletePerson = (id) => {

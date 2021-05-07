@@ -6,7 +6,8 @@ const EditPersonForm = props => {
     const initialFormState = { firstName: "", lastName: "", age: 0, phoneNumber: "", locState: "" };
     const [person, setPerson] = useState(initialFormState)
     useEffect(
-        () => {
+        (p) => {
+            
             console.log('effect')
             setPerson(props.currentPerson);
         },
@@ -29,7 +30,7 @@ const EditPersonForm = props => {
         setPerson({...person, [name] : value})
     }
     return (
-        <div >
+        <div className="container">
         <form onSubmit={onSubmit}>
                 <h2>Edit Person</h2>
                     <div className="row">
@@ -85,7 +86,7 @@ const EditPersonForm = props => {
                             name="phoneNumber"
                             value={person.phoneNumber}
                             onChange={handleInputChange}
-                            placeholder="Phone Number"
+                            placeholder="ex. 000-000-0000"
                         />
                         </div>
                     </div>

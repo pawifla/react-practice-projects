@@ -1,0 +1,23 @@
+
+html{
+    scroll-behavior: smooth;
+}
+.scrollBox{
+display: flex;
+align-items:center;
+justify-content: center;
+margin: 0;
+padding: 0;
+max-height: 500px;
+overflow-y: scroll;
+}
+th{
+    position:sticky;
+    background-color: white;
+    border-bottom: 1px;
+    border-color:black;
+    top:0;
+}
+table{
+    position:relative;
+}

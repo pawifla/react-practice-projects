@@ -23,6 +23,11 @@ namespace ReactCoreApi.Models
         public int editPerson(Person person)
         {
             var personToEdit = Persons.Where(x => x.PersonID == person.PersonID).ToList().FirstOrDefault();
+            personToEdit.FirstName = person.FirstName;
+            personToEdit.LastName = person.LastName;
+            personToEdit.Age = person.Age;
+            personToEdit.PhoneNumber = person.PhoneNumber;
+            personToEdit.LocState = person.LocState;
             Persons.Update(personToEdit);
             this.SaveChanges();
             return 1;

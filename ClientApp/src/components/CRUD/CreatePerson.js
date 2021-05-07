@@ -21,10 +21,10 @@ const CreatePersonForm = props => {
         setPerson({...person, [name] : value})
     }
     return (
-        <div >
+        <div className="container">
         <form onSubmit={onSubmit}>
                 <h2>Create Person</h2>
-                    <div className="row">
+                   <div className="row">
                     <div className="col">
                             First Name
                         </div>
@@ -77,7 +77,7 @@ const CreatePersonForm = props => {
                             name="phoneNumber"
                             value={person.phoneNumber}
                             onChange={handleInputChange}
-                            placeholder="Phone Number"
+                            placeholder="ex. 000-000-0000"
                         />
                         </div>
                     </div>
