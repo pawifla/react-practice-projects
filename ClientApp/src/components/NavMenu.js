@@ -38,6 +38,11 @@ export class NavMenu extends Component {
                     <Glyphicon glyph='list-alt'/> Do CRUD
                 </NavItem>
             </LinkContainer>
+            <LinkContainer to={'/dynamicForm'}>
+                <NavItem>
+                    <Glyphicon glyph='transfer'/> Dynamic Form
+                </NavItem>
+            </LinkContainer>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

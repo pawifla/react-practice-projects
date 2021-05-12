@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+﻿import React from 'react';
 import './PersonTable.css';
 
 const PersonTable = props => {
@@ -9,7 +9,7 @@ const PersonTable = props => {
         try {
             await props.deletePerson(id);
         } catch (e) {
-            (e) => console.log(e);
+            return (e) => console.log(e);
         }
     }
     const onEdit = async (person) => {
@@ -17,7 +17,7 @@ const PersonTable = props => {
         try {
             await props.updatingPerson(person)
         } catch(e){
-            (e) => console.log(e);
+            return (e) => console.log(e);
         }
     }
    
@@ -48,7 +48,7 @@ const PersonTable = props => {
                                 <td>{person.phoneNumber}</td>
                                 <td>{person.locState}</td>
                                 <td><button className="btn btn-outline-primary btn-sm" onClick={() => onEdit(person)}>Edit</button></td>
-                                <td><button className="btn btn-outline-primary btn-sm" onClick={() => onDelete(parseInt(person.personID))}>Delete</button></td>
+                                <td><button className="btn btn-outline-primary btn-sm" onClick={() => onDelete(parseInt(person.personID, 10))}>Delete</button></td>
                             </tr>
                         ))
                     }

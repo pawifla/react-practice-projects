@@ -7,7 +7,7 @@ import { Counter } from './components/Counter';
 import CrudContainer from './components/CRUD/CrudContainer';
 import PersonTable from './components/CRUD/PersonTable';
 import CreatePersonForm from './components/CRUD/CreatePerson';
-
+import DynamicDisplayContainer from './components/DynamicForm/dDynamicContainer';
 
 export default class App extends Component {
   displayName = App.name
@@ -21,6 +21,7 @@ export default class App extends Component {
         <Route path='/getPerson' component={PersonTable}/>
         <Route path='/createPerson' component={CreatePersonForm}/>
         <Route path='/crud' component={CrudContainer}/>
+        <Route path='/dynamicForm' component={DynamicDisplayContainer}/>
       </Layout>
     );
   }

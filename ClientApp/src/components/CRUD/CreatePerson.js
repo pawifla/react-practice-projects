@@ -13,7 +13,7 @@ const CreatePersonForm = props => {
             setPerson(initialFormState);
             //make toasts work later
         } catch(e){
-            e => console.log(e);    
+            return e => console.log(e);    
         }
     }
     const handleInputChange = e => {

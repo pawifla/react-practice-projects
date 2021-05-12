@@ -7,7 +7,6 @@ const EditPersonForm = props => {
     const [person, setPerson] = useState(initialFormState)
     useEffect(
         (p) => {
-            
             console.log('effect')
             setPerson(props.currentPerson);
         },
@@ -22,7 +21,7 @@ const EditPersonForm = props => {
             console.log('editing' + person);
             //make toasts work later
         } catch(e){
-            e => console.log(e);    
+            return e => console.log(e);    
         }
     }
     const handleInputChange = e => {

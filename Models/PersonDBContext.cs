@@ -17,8 +17,7 @@ namespace ReactCoreApi.Models
         public int addPerson(Person person)
         {
             Persons.Add(person);
-            this.SaveChanges();
-            return 1;
+            return this.SaveChanges();
         }
         public int editPerson(Person person)
         {
@@ -29,15 +28,13 @@ namespace ReactCoreApi.Models
             personToEdit.PhoneNumber = person.PhoneNumber;
             personToEdit.LocState = person.LocState;
             Persons.Update(personToEdit);
-            this.SaveChanges();
-            return 1;
+            return this.SaveChanges();
         }
         public int deletePerson(int id)
         {
             var personToDelete = Persons.Where(x => x.PersonID == id).ToList().FirstOrDefault();
             Persons.Remove(personToDelete);
-            this.SaveChanges();
-            return 1;
+            return this.SaveChanges();
         }
     }
 }

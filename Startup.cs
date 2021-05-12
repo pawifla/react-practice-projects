@@ -32,6 +32,8 @@ namespace ReactCoreApi
            // services.Configure<ConnectionSetting>(Configuration.GetSection("ConnectionSettings"));
             services.AddDbContextPool<PersonDBContext>(options
                     => options.UseSqlServer(Configuration.GetConnectionString("PersonDBConnection")));
+            services.AddDbContextPool<HomeOwnersDBContext>(options
+                    => options.UseSqlServer(Configuration.GetConnectionString("HomeOwnersDBConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
