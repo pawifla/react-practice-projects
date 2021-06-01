@@ -35,13 +35,13 @@ const DynamicDisplayContainer = () =>{
             .then(res=> res.json())
             .then(statesList=>{
                 setStatesList(statesList);
-                console.log('States'+ statesList.id);
             })
             .catch(error=>console.log(error));
     }
     //gets list of cities from DB based on state
     const cityList = (id) => {
-      fetch('api/GenCities/{stateID}',{
+      fetch('api/GenCities/'+id,
+      {
       method: 'Post',
       headers:{'Content-Type': 'application/json'},
       body:id

@@ -11,15 +11,16 @@ const DynamicInputForm = props => {
     const handleInputChange = e =>{
         const {name, value} = e.target
         setHomeOwner({...homeOwner, [name]: value});
-        if(name === homeOwner.stateName){
-            currentStateID = value;
-            getCities(value);
+        if(name === "stateName"){
+            currentStateID = e.target.value;
+            getCities(currentStateID);
         }
     }
     const getCities = async (e) =>{
-        e.preventDefault();
+        //e.preventDefault();
+        console.log(e);
         try{
-            await props.cityList()
+            await props.cityList(e);
         }
         catch(e){
             return e=> console.log(e)
@@ -61,9 +62,8 @@ const DynamicInputForm = props => {
                     <option disabled selected>States</option>{
                     props.statesList.map(state =>(
                         <option 
-                        value={state.stateID}
-                        name="stateName"
-                        onChange={handleInputChange} >{state.stateName}</option>
+                        value={state.id}
+                        >{state.stateName}</option>
                     ))
                 }
                 </select></label>
@@ -71,7 +71,7 @@ const DynamicInputForm = props => {
                 <select className="form-control" value={homeOwner.cityName} 
                 onChange={handleInputChange} required>{
                    props.citiesList.map(city => (
-                       <option value={homeOwner.cityName}>{homeOwner.cityName}</option>
+                       <option value={city.cityName}>{city.cityName}</option>
                    )) 
                 }
                 </select></label>
