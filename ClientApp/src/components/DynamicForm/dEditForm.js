@@ -1,6 +1,7 @@
+
 import React, {useState, useEffect} from 'react';
 
-const DynamicInputForm = props => {
+const DynamicEditForm = props => {
     const initialFormState = {firstName:"", lastName:"", age:0, cityName:"", stateName:"", houseName:""};
     const [homeOwner, setHomeOwner] = useState(initialFormState);
    
@@ -29,7 +30,7 @@ const DynamicInputForm = props => {
     const onSubmit = async (e) => {
             e.preventDefault();
         try {
-            await props.createData(homeOwner);
+            await props.updateData(homeOwner);
             props.setCurrentData(homeOwner);
             setHomeOwner(initialFormState);
         } catch (e) {
@@ -108,4 +109,4 @@ const DynamicInputForm = props => {
         </div>
     );
 }
-export default DynamicInputForm;
+export default DynamicEditForm;

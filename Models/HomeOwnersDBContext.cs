@@ -23,28 +23,6 @@ namespace ReactCoreApi.Models
 
         public List<DisplayHomeOwner> GetHomeOwnerss()
         {
-            //just make a stored procedure
-
-            //Amenities will need to be a list.
-        //    var query = (from O in HomeOwners
-        //                 join Location L in HomeOwners_Location
-        //                 on O.LocationID equals L.ID
-        //                 join House H in HomeOwners_Houses
-        //                 on O.HouseID equals H.ID
-        //                 join State S in HomeOwners_StateLUT
-        //                 on L.StateID equals S.ID
-        //                 join City C in HomeOwners_CityLUT
-        //                 on L.CityID equals C.ID
-        //                 join Amenities A in HomeOwners_HouseAmenitiesLUT
-        //                 on H.AmenityID equals A.ID
-        //                 join HouseSpecs HS in HomeOwners_HouseLUT
-        //                 on H.HouseTypeID equals HS.HouseTypeName
-        //                 where O.HouseID == H.ID && O.LocationID == L.ID
-        //                 select new DisplayHomeOwner { FirstName = O.FirstName, LastName = O.LastName,
-        //                     Age = (O.Age).ToString(), LocationName = C.CityName + ", " + S.StateName,
-        //                     AmenityName = A.AmenityName, HouseName = HS.HouseTypeName
-        //                 }).ToList();
-
             var sqlQuery = displayHomeOwners.FromSql("Select HomeOwners.ID, FirstName, LastName, Age, (Select CityName from HomeOwners_CityLUT Where CityID = Loc.CityID) CityName," +
                                    " (Select StateName from HomeOwners_StateLUT Where ID = Loc.StateID) StateName, " +
                                    " (Select HouseType From HomeOwners_HouseLUT Where HouseTypeID = House.HouseTypeID) HouseName " +

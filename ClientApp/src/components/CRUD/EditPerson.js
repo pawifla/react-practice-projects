@@ -18,8 +18,6 @@ const EditPersonForm = props => {
             await props.editPerson(person);
             props.setCurrentPerson(person);
             setPerson(initialFormState);
-            console.log('editing' + person);
-            //make toasts work later
         } catch(e){
             return e => console.log(e);    
         }

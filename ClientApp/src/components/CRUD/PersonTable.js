@@ -60,12 +60,3 @@ const PersonTable = props => {
 }
 
 export default PersonTable;
-
-//maybe for nulls example try later
-//export class EmployeeData {  
-//    employeeId: number = 0;
-//    name: string = "";  
-//    gender: string = "";  
-//    city: string = "";  
-//    department: string = "";  
-//}; 

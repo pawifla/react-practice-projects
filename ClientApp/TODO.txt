@@ -1,24 +1,18 @@
     TODO Next:
 
 >next tab will be a dynamic web form
-    >use selects, textareas, datepickers, spinners, checkboxes, file option(maybe) etc
-    >this is gonna needs:
-        >new model
-            >Data:
-        >new dbcontext
-        >new api? Y/N
-        >new sql tables and luts for the selects and shit
+    >instead of the previous bs, we are now making a very MVP bs form
+		>this bs form just needs a creat, update, and delete call.
+		>buttons for these
+		>and a form redesign so it doesnt look so janky.
+	
+
    
 
 Data:
 
 	Database Tables:	
 		HomeOwners(main)
-			Houses
-				HouseType
-					(1)This will be appartment, house, mobile home.
-				Amenities
-					(many)this will be based on the house type. 
 			Locaiton
 				City
 				State

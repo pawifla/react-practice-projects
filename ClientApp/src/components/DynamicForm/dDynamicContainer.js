@@ -3,6 +3,7 @@
 import React, {useState, useEffect} from 'react';
 import DisplayTable from "./dDisplayTable";
 import DynamicInputForm from "./dInputForm";
+import DynamicEditForm from "./dEditForm";
 
 const DynamicDisplayContainer = () =>{
     //Data
@@ -17,6 +18,7 @@ const DynamicDisplayContainer = () =>{
     const [showForm, setShowForm] = useState(false);
     const [statesList, setStatesList] = useState(stateObject);
     const [citiesList, setCitiesList] = useState(cityObject);
+
     //Crud Ops
     //selects data from DB for table
     const getData = ()=>{
@@ -52,15 +54,32 @@ const DynamicDisplayContainer = () =>{
         })
         .catch(error=>console.log(error));
     }
-//    const createData = () =>{
-//
-//    }
-//    const updateData = () =>{
-//
-//    }
-//    const deleteData = () =>{
-//
-//    }
+    const createData = (person) =>{
+      const data = JSON.stringify(person,null,2);
+      fetch('api/CreateHomeOwners',
+      {
+        method: 'Post',
+        headers:{'Content-Type': 'application/json'},
+        body: data
+      }).catch(error=> console.log(error));
+
+    }
+    const updatingData = (person) =>{
+      setEdit(true);
+      setCurrentData({firstName:person.firstName, lastName:person.lastName, age:person.age, cityName:person.cityName, stateName:person.stateName, houseName:""})
+    }
+    const updateData = (person) =>{
+      const data = JSON.stringify(person,null,2);
+      fetch('api/EditHomeOwners',{
+        method:'POST',
+        headers:{'Content-Type': 'application/json'},
+        body: data
+      }).catch(error=> console.log(error));
+    }
+    const deleteData = (id) =>{
+      fetch('api/DeleteHomeOwners/'+id,{
+      method:'DELETE'}).catch(error=>console.log(error));
+    }
 useEffect(()=>{
   getData();
   stateList();
@@ -71,8 +90,29 @@ useEffect(()=>{
         //table
         //inputform/editInputForm
         <div><DisplayTable
+        deleteData={deleteData}
+        updateData={updateData}
         data={data}
         getData={getData}/>
+        <div>
+{editing ? (
+        <DynamicEditForm
+        data={data}
+        editing={editing}
+        setEdit={setEdit}
+        updatingDate={updatingData}
+        currentData = {currentData}
+        showForm = {showForm}
+        setCurrentData = {setCurrentData}
+        setShowForm = {setShowForm}
+        setStatesList = {setStatesList}
+        statesList={statesList}
+        stateList={stateList}
+        updateData={updateData}
+        citiesList = {citiesList}
+        setCitiesList={setCitiesList}
+        cityList={cityList}/>
+): (
         <DynamicInputForm
         data={data}
         currentData = {currentData}
@@ -82,9 +122,12 @@ useEffect(()=>{
         setStatesList = {setStatesList}
         statesList={statesList}
         stateList={stateList}
+        createData={createData}
         citiesList = {citiesList}
         setCitiesList={setCitiesList}
         cityList={cityList}/>
+) }
+        </div>
         </div>
     )
 }
