@@ -7,7 +7,7 @@ import DynamicInputForm from "./dInputForm";
 const DynamicDisplayContainer = () =>{
     //Data
     const initialFormState = [{/*Figure out the data and make an object here*/}]
-    const stateObject = [{stateCode: "", stateName:""}]
+    const stateObject = [{id: "", stateName:""}]
     const cityObject = [{stateID:"",cityName:"", cityID:0}]
 
     //State
@@ -18,6 +18,7 @@ const DynamicDisplayContainer = () =>{
     const [statesList, setStatesList] = useState(stateObject);
     const [citiesList, setCitiesList] = useState(cityObject);
     //Crud Ops
+    //selects data from DB for table
     const getData = ()=>{
       fetch('api/HomeOwnersReal')
           .then(res=> res.json())
@@ -28,27 +29,28 @@ const DynamicDisplayContainer = () =>{
           .catch(error=>console.log(error));
         //getData api call
     }
+    //gets list of states from DB
     const stateList = () =>{
         fetch('api/GetStates')
             .then(res=> res.json())
             .then(statesList=>{
                 setStatesList(statesList);
-                console.log('States'+ statesList);
+                console.log('States'+ statesList.id);
             })
             .catch(error=>console.log(error));
     }
-    const cityList = (stateID) => {
+    //gets list of cities from DB based on state
+    const cityList = (id) => {
       fetch('api/GenCities/{stateID}',{
       method: 'Post',
-      headers:{'Content-Type': 'application/jsoon'},
-      body:stateID
+      headers:{'Content-Type': 'application/json'},
+      body:id
     })
         .then(res=>res.json())
         .then(cityList =>{
           setCitiesList(cityList);
         })
         .catch(error=>console.log(error));
-
     }
 //    const createData = () =>{
 //
