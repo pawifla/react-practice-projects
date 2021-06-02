@@ -52,7 +52,7 @@ const DynamicInputForm = props => {
                 /></label>
                 </div>
                 <br/>
-                <div class="row">
+                <div className="row">
                 <label>Last Name 
                 <input type="text" required
                     className="form-control"
@@ -63,7 +63,7 @@ const DynamicInputForm = props => {
                 /></label>
                 </div>
                 <br/>
-                <div class="row">
+                <div className="row">
                 <label>Age
                 <input type="number" required
                     className="form-control"
@@ -74,34 +74,40 @@ const DynamicInputForm = props => {
                 /></label>
                 </div>
                 <br/>
-                <div class="row">
+                <div className="row">
                 <label>State
                 <select placeholder="Cities" className="form-control" value={homeOwner.stateName} name="stateName"
                 onChange={handleInputChange}  required>
-                    <option selected>States</option>{
+                    <option key="" defaultValue>States</option>{
                     props.statesList.map(state =>(
                         <option 
+                        key={state.id}
                         value={state.id}
-                        >{state.stateName}</option>
+                        >
+                            {state.stateName}
+                        </option>
                     ))
                 }
                 </select></label>
                 </div>
                 <br/>
-                <div class="row">
+                <div className="row">
                 <label>City
-                <select  placeholder="Cities" className="form-control" value={homeOwner.cityName} 
+                <select  placeholder="Cities" className="form-control" value={homeOwner.cityName} name="cityName"
                 onChange={handleInputChange} required>
-                    <option selected>Cities</option>
-                    {
+                    <option key="" defaultValue>Cities</option> {
                    props.citiesList.map(city => (
-                       <option value={city.cityName}>{city.cityName}</option>
+                       <option 
+                       key={city.CityID} 
+                       value={city.CityID}>
+                           {city.cityName}
+                       </option>
                    )) 
                 }
                 </select></label>
                 </div>
                 <br/>
-                <div class="row">
+                <div className="row">
                     <button className="btn btn-light" type="submit" value="Submit">Create</button>
                 </div>
             </form>

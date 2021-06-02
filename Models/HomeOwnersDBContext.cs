@@ -68,7 +68,7 @@ namespace ReactCoreApi.Models
         {
             List<City> cList = HomeOwners_CityLUT
                 .Where(x=> x.ID == stateID)
-                .GroupBy(x => x.ID)
+                .GroupBy(x => x)
                 .SelectMany(x=> x).ToList();
             return cList;
         }

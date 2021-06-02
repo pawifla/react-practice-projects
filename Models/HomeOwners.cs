@@ -46,6 +46,7 @@ namespace ReactCoreApi.Models
     public class City
     {
         public string ID { get; set; }//Location.CityID
+        public int CityID { get; set; }
         public string CityName { get; set; }
     }
     public class Amenities

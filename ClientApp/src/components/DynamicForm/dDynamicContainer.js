@@ -51,6 +51,7 @@ const DynamicDisplayContainer = () =>{
         .then(res=>res.json())
         .then(cityList =>{
           setCitiesList(cityList);
+          console.log(cityList);
         })
         .catch(error=>console.log(error));
     }
